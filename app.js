@@ -16,7 +16,11 @@ function fib(n){
     return value;
 }
 
-const length = 40;
+let length =　parseInt(process.argv[2], 10);
+if (!length){
+    console.log('This input is　NOT NUMBER. So we did as if the input was 0.' );
+    length = 0;
+}
 for (let i = 0; i <= length; i++){
     console.log(fib(i));
 }
