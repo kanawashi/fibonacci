@@ -1,17 +1,19 @@
 'use strict';
+const memo = new Map();
+memo.set(0, 0);
+memo.set(1, 1);
 /**
- * n 番目のフィボナッチ数を返す　fib関数
- * @param {Number} n 
- * @returns {Number}
+ * n 番目のフィボナッチ数を連想配列memoに格納して、返す　fib関数
+ * @param {Number} n
+ * @returns {Number} value
  */
 function fib(n){
-    if (n === 0){
-        return n;
-    }else if (n === 1){
-        return 1;
-    }else{
-        return fib(n-2) + fib(n-1);
+    if (memo.has(n)){
+        return memo.get(n);
     }
+    const value = fib(n-1) + fib(n-2);
+    memo.set(n, value);
+    return value;
 }
 
 const length = 40;
